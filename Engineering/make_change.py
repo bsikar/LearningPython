@@ -2,7 +2,10 @@
 #  “Aggies do not lie, cheat, or steal, or tolerate those who do” 
 #  “I have not given or received any unauthorized aid on this assignment” 
 # 
-# Name:   Evan Slyter
+# Names: Evan Slyter
+#        Sam Kinnard
+#        Caleb Lorimor
+#        Ryan Kethley
 # Section:   565
 # Assignment: 4.13 LAB: Make Change
 # Date:  9/13/22
