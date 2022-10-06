@@ -24,7 +24,7 @@ while (change>0):
         quarters+=1
         change-=0.25
         change=round(change,2)
-        #print(change)
+       
         
     elif change>=0.10:
         dimes+=1
@@ -64,6 +64,7 @@ if nickels>0:
         print(f"{nickels} nickel") 
     else:
         print(f"{nickels} nickels")
+        print(nickels,"nickels")
 
      
    

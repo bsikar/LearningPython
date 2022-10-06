@@ -2,10 +2,14 @@
 #  “Aggies do not lie, cheat, or steal, or tolerate those who do”
 #  “I have not given or received any unauthorized aid on this assignment”
 #
-# Name:   Evan Slyter
+# Names: Evan Slyter
+#        Sam Kinnard
+#        Caleb Lorimor
+#        Ryan Kethley
 # Section:   565
-# Assignment:
-# Date:
+# Assignment: 6.11 LAB: Pyramid Area 1
+# Date: 9/29/22
+
 from math import sqrt
 
 sl = float(input("Enter the side length in meters: "))
@@ -16,7 +20,7 @@ howmany = 0
 totalsa = 0
 
 for x in range(1, layer + 1):
-    howmany = howmany + ((1 * x - 1) + x)
+    howany = howmany + ((1 * x - 1) + x)
     # sa of outside band
     s = ((sl * x) * 3) * sl
     # sa of outside band + top
