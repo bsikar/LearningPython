@@ -3,26 +3,24 @@
 #  “I have not given or received any unauthorized aid on this assignment”
 #
 # Name:   Evan Slyter
+#         Ryan Kethley
+#         Caleb Lorimor
+#         Sam Kinnard
 # Section:   565
-# Assignment:
-# Date:
-from math import sqrt
+# Assignment: Pyramid Area 2
+# Date: 10/7/22
 
-sl = float(input("Input side length"))
-layer = int(input("Input number of layers"))
+# imports
+from math import *
 
-# howmany=howmany + ((1*layer-1)+layer)
+# variables
+side = float(input("Enter the side length in meters: "))
+n = int(input("Enter the number of layers: "))
 
+layers = (n * ((n + 1) / 2)) * 3 * (side**2)
 
-totalsa = 0
+top = (n**2) * (sqrt(3) / 4) * (side**2)
 
-for x in range(1, layer):
-    # sa of outside band
-    s = ((sl * layer) * 3) * sl
+total_area = layers + top
 
-    # sa of outside band + top
-    sa = s + ((sqrt(3) / 4) * (sl**2)) * (sl * layer)
-
-    totalsa = totalsa + sa
-    totalsa = totalsa - (sqrt(3) / 4) * (sl**2)
-print(totalsa)
+print(f"You need {total_area:.2f} m^2 of gold foil to cover the pyramid")
