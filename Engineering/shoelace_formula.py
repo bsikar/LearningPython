@@ -10,36 +10,40 @@
 # Assignment: 9.15 LAB: Shoelace formula
 # Date: 10/25/22
 
-
-vertices = input("Please enter the vertices: ")
-cross_list=[]
-
-
+# getpoints function
 def getpoints(string):
-  string=string.split()
-  for x in range(len(string)):
-      string[x]=string[x].split(',')
-      for y in range(len(string[x])):
-        string[x][y]=int(string[x][y])
-  return string
-  
+    string = string.split()
+    for i in range(len(string)):
+        a = string[i].split(",")
+        for k in range(len(a)):
+            a[k] = float(a[k])
+        string[i] = a
+    return string
 
-def cross(p1,p2):
-  product=(p1[0]*p2[1])-(p2[0]*p1[1])
-  return product
 
-for x in range(len(getpoints(vertices))-1):
-    cross_list.append(cross(getpoints(vertices)[x],getpoints(vertices)[x+1]))
-cross_list.append(cross(getpoints(vertices)[-1],getpoints(vertices)[0]))
+def cross(p1, p2):
+    p1X = p1[0]
+    p1Y = p1[1]
+    p2X = p2[0]
+    p2Y = p2[1]
+    product = (p1X * p2Y) - (p1Y * p2X)
+    return product
 
-area=(0.5)*sum(cross_list)
-print(area)
 
-def shoelace():
-  area 
-  print()
+def shoelace(vertices):
+    vertices.append(vertices[0])
+    total = 0
+    for i in range(len(vertices) - 1):
+        total += (cross(vertices[i], vertices[i + 1])) / 2
+    return total
 
 
 def main():
-  print()
+    vertices = input("Please enter the vertices: ")
+    vertices = getpoints(vertices)
+    area = shoelace(vertices)
+    print("The area of the polygon is ", area)
 
+
+if __name__ == "__main__":
+    main()
