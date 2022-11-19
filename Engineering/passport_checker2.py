@@ -37,7 +37,7 @@ def eyr(passport):
     passport_split = passport.replace("\n", " ")
     passport_split = passport_split.split(" ")
     for element in passport_split:
-        if "iyr" in element:
+        if "eyr" in element:
             year = element[4:]
             if not 2022 <= int(year) <= 2032:
                 passport_list.remove(passport)
@@ -51,6 +51,7 @@ def hgt(passport):
         if "hgt" in element:
             number = element[4:]
             number = number[:-2]
+
             if "in" not in element and "cm" not in element:
                 passport_list.remove(passport)
                 return -1
@@ -70,15 +71,15 @@ def ecl(passport):
     for element in passport_split:
         if "ecl" in element:
             if (
-                element == "amb"
-                or element == "blu"
-                or element == "brn"
-                or element == "gry"
-                or element == "grn"
-                or element == "hzl"
-                or element == "oth"
+                "amb" in element
+                or "blu" in element
+                or "brn" in element
+                or "gry" in element
+                or "grn" in element
+                or "hzl" in element
+                or "oth" in element
             ):
-                return -1
+                return
             else:
                 passport_list.remove(passport)
                 return -1
@@ -96,7 +97,7 @@ def pid(passport):
             else:
                 try:
                     int(number)
-                    return -1
+                    return
                 except:
                     passport_list.remove(passport)
                     return -1
@@ -114,33 +115,40 @@ def cid(passport):
                 passport_list.remove(passport)
                 return -1
 
-            if len(int(number)) != 3:
+            if len(str(int(number))) != 3:
                 passport_list.remove(passport)
                 return -1
 
 
 def valid_passport(passport):
+    global pos
     if byr(passport) == -1:
-        return
-    if byr(passport) == -1:
+        pos -= 1
         return
     if iyr(passport) == -1:
+        pos -= 1
         return
     if eyr(passport) == -1:
+        pos -= 1
         return
     if hgt(passport) == -1:
+        pos -= 1
         return
     if ecl(passport) == -1:
+        pos -= 1
         return
     if pid(passport) == -1:
+        pos -= 1
         return
     if cid(passport) == -1:
+        pos -= 1
         return
 
 
 # input passports file
 filename = input("Enter the name of the file: ")
 passports = open(filename, "r")
+pos = 0
 
 # read passports file
 x = passports.read()
@@ -158,14 +166,21 @@ while passport < len(passport_list):
         continue
     passport += 1
 
+
+while pos < len(passport_list):
+    valid_passport(passport_list[pos])
+    pos += 1
+
 # print valid passports
 print(f"There are {len(passport_list)} valid passports")
-print(len(passport_list))
-
-for passport in passport_list:
-    valid_passport(passport)
-print(passport_list)
 
 
-print(len(passport_list))
 passports.close()
+
+good_passports = open("valid_passports2.txt", "w")
+
+for each in passport_list:
+    good_passports.write(each)
+    good_passports.write("\n\n")
+
+good_passports.close()
